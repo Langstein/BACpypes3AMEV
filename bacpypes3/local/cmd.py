@@ -67,6 +67,7 @@ class Commandable:
     _debug: Callable[..., None]
 
     priorityArray: PriorityArray
+    currentCommandPriority: OptionalUnsigned
 
     def __init__(self, **kwargs) -> None:
         if _debug:
