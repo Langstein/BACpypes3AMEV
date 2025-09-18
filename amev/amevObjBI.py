@@ -566,3 +566,46 @@ class BI_RM_AMEV1(BinaryInputObject):
     propertyList=[75,77,79,85,28,31,111,36,103,81,84,46,4,16,15,115,33,114,113,17,6,35,0,72,130,351,352,353,355,354,356,357,371,168]
     _cov_criteria = COVIncrementCriteria
 
+class BI_ENT_AMEV1(BinaryInputObject):
+    objectIdentifier=("binaryInput", 451)
+    objectName="MUSTER_###_#####°##_#####_###_#####_#####_ENT01"
+    description="Muster Entriegelung"
+    presentValue="inactive"
+    deviceType="BACtwin BI_ENT_AMEV1 Entriegelung"
+    statusFlags=[False, False, False, False]
+    eventState="normal"
+    reliability="noFaultDetected"
+    outOfService=False
+    polarity="normal"
+    inactiveText="Inaktiv"
+    activeText="Aktiv"
+    changeOfStateTime= DateTime(date=Date("2025-01-01")._value,time=(23, 59, 59, 99))
+    changeOfStateCount=0
+    timeOfStateCountReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    elapsedActiveTime=1
+    timeOfActiveTimeReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    timeDelay=0
+    notificationClass=500
+    alarmValue="active"
+    eventEnable=[True,True,True]
+    ackedTransitions=[True,True,True]
+    notifyType=1
+    eventTimeStamps=[
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        ]
+    eventMessageTexts=["","",""] #ArrayOf(CharacterString, _length=3),
+    eventMessageTextsConfig=["Alarm:","Fehler:","Normal:"] #ArrayOf(CharacterString, _length=3)
+    eventDetectionEnable=False
+    #eventAlgorithmInhibitRef=ObjectPropertyReference
+    #eventAlgorithmInhibit=False
+    timeDelayNormal=1
+    reliabilityEvaluationInhibit=False
+    #interfaceValue: OptionalReal
+    #faultHighLimit: Real
+    #faultLowLimit: Real
+    profileName="BI_ENT_AMEV1 Entriegelung"
+    propertyList=[75,77,79,85,28,31,111,36,103,81,84,46,4,16,15,115,33,114,113,17,6,35,0,72,130,351,352,353,355,354,356,357,371,168]
+    _cov_criteria = COVIncrementCriteria
+

@@ -183,6 +183,94 @@ class AI_MW_T_H_HT_AMEV1(_Object, AnalogInputObject):
         # intrinsic fault detection
       #  self._fault_algorithm = OutOfRangeFaultAlgorithm(None, self)
     
+class AI_MW_M_L_RU_AMEV1(_Object, AnalogInputObject):
+    objectIdentifier=("analogInput", 116)
+    objectName="MUSTER_GEW_ANLxx°xx_BGRxx_AU~_EF~01_M~~01_MW~01"
+    description="MUSTER Gewerk Anlage Baugruppe Medium/Position Aggregat Betriebsmittel Funktion"
+    presentValue=0.0
+    units="percentRelativeHumidity"
+    deviceType="BACtwin AI_MW_M_L_RU_AMEV1 Fühler rel. Feuchte"
+    statusFlags=[False, False, False, False]
+    eventState="normal"
+    reliability="noFaultDetected"
+    outOfService=False
+    updateInterval=1
+    minPresValue=0.0
+    maxPresValue=100.0
+    resolution=0.1
+    covIncrement=3
+    timeDelay=240
+    notificationClass=300
+    highLimit=70.0
+    lowLimit=30.0
+    deadband=2.5
+    limitEnable=[True, True]
+    eventEnable=[True, True, True]
+    ackedTransitions=[True,True,True]
+    notifyType="alarm"
+    eventTimeStamps=[
+                TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+                TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+                TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+                ]
+    eventMessageTexts=["","",""]
+    eventMessageTextsConfig=["Alarm:","Fehler:","Normal"]
+    eventDetectionEnable=True
+    #eventAlgorithmInhibitRef=Meldeschauer_inhibit, 
+    eventAlgorithmInhibit=False
+    timeDelayNormal=1
+    reliabilityEvaluationInhibit=False
+    #interfaceValue: OptionalReal
+    #faultHighLimit: Real
+    #faultLowLimit: Real
+    profileName="AI_MW_M_L_RU_AMEV1 Fühler rel. Feuchte"
+    propertyList=[75,77,79,85,28,31,111,36,103,81,118,117,69,65,106,22,113,17,45,59,25,52,35,0,72,130,351,352,353,355,354,356,357,371,168]
+    _cov_criteria = COVIncrementCriteria 
+
+class AI_MW_P_AMEV1(_Object, AnalogInputObject):
+    objectIdentifier=("analogInput", 118)
+    objectName="MUSTER_GEW_ANLxx°xx_BGRxx_AU~_EF~01_P~~01_MW~01"
+    description="MUSTER Gewerk Anlage Baugruppe Medium/Position Aggregat Betriebsmittel Funktion"
+    presentValue=0.0
+    units="bars"
+    deviceType="BACtwin AI_MW_P_AMEV1 Fühler Druck"
+    statusFlags=[False, False, False, False]
+    eventState="normal"
+    reliability="noFaultDetected"
+    outOfService=False
+    updateInterval=1
+    minPresValue=0.0
+    maxPresValue=10.0
+    resolution=0.1
+    covIncrement=0.2
+    timeDelay=60
+    notificationClass=300
+    highLimit=6.0
+    lowLimit=1.5
+    deadband=0.2
+    limitEnable=[True, True]
+    eventEnable=[True, True, True]
+    ackedTransitions=[True,True,True]
+    notifyType="alarm"
+    eventTimeStamps=[
+                TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+                TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+                TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+                ]
+    eventMessageTexts=["","",""]
+    eventMessageTextsConfig=["Alarm:","Fehler:","Normal"]
+    eventDetectionEnable=True
+    #eventAlgorithmInhibitRef=Meldeschauer_inhibit, 
+    eventAlgorithmInhibit=False
+    timeDelayNormal=1
+    reliabilityEvaluationInhibit=False
+    #interfaceValue: OptionalReal
+    #faultHighLimit: Real
+    #faultLowLimit: Real
+    profileName="AI_MW_P_AMEV1 Fühler Druck"
+    propertyList=[75,77,79,85,28,31,111,36,103,81,118,117,69,65,106,22,113,17,45,59,25,52,35,0,72,130,351,352,353,355,354,356,357,371,168]
+    _cov_criteria = COVIncrementCriteria     
+    
 class AI_RW_AMEV1(_Object, AnalogInputObject):
     objectIdentifier=("analogInput", 134)
     objectName="MUSTER_GEW_ANLxx°xx_BGRxx_HZ~_VEN01_MOT01_RW~01"
