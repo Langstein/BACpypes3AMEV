@@ -265,6 +265,18 @@ def Test_AMEV_Objekte(app):
         )
         app.add_object(ai10001)
 
+        ai102=AI_MW_T_AU_AMEV1(            
+        )
+        #app.add_object(ai102)
+
+        ai103=AI_MW_T_H_NT_AMEV1(            
+        )
+        app.add_object(ai103)
+
+        ai104=AI_MW_T_H_HT_AMEV1(            
+        )
+        #app.add_object(ai104)
+
         bi402=BI_GM_BSK_AMEV1(
         )
         app.add_object(bi402) 
@@ -1380,9 +1392,9 @@ async def main() -> None:
             
 #Aggregate
         Basisobjekte(app) #Müssen immer da sein
-        #Test_AMEV_Objekte(app)
+        Test_AMEV_Objekte(app)
         #NONAMEV_Objekte(app)
-        Heizkreis(app)       
+        #Heizkreis(app)       
             
         #Test am AMEV Class Object
         ai10=AI_MW_T_AU_AMEV1(
