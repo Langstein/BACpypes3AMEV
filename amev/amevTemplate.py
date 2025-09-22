@@ -182,21 +182,21 @@ def Test_AMEV_Objekte(app):
         sv101=SV_ANL_AMEV1(
             #objectIdentifier=("structuredView", 101)
             #objectName="ORTS-BAS_480_ASP01°01_#####_###_AS~01_#####_SV~01"
-            #description="Gebäudeautomationssystem Automationsschwerpunkt AS System"
+            #description="GA-System Automationsschwerpunkt AS System"
         )
         app.add_object(sv101)
 
         sv102=SV_BGP_AMEV1(
             #objectIdentifier=("structuredView", 102)
             #objectName="ORTS-BAS_480_ASP01°01_#####_###_AS~01_#####_SV~02"
-            #description="Gebäudeautomationssystem Automationsschwerpunkt AS Subsystem"
+            #description="GA-System Automationsschwerpunkt AS Subsystem"
         )
         app.add_object(sv102)
         
         sv103=SV_AGG_AMEV1(
             #objectIdentifier=("structuredView", 103)
             #objectName="ORTS-BAS_480_ASP01°01_#####_###_AS~01_#####_SV~03"
-            #description="Gebäudeautomationssystem Automationsschwerpunkt AS Equipment"
+            #description="GA-System Automationsschwerpunkt AS Equipment"
         )
         app.add_object(sv103)
 

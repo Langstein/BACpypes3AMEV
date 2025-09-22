@@ -311,7 +311,7 @@ class BI_SM_LU_AMEV1(BinaryInputObject):
 class BI_SM_SYS_AMEV1(BinaryInputObject):
     objectIdentifier=("binaryInput", 409)
     objectName="MUSTER_480_ASP01°01_#####_###_AS~01_PTB01_SM~01"
-    description="Gebäudeautomationssystem Automationsschwerpunkt AS Pufferbaterie Störmeldung"
+    description="GA-System Automationsschwerpunkt AS Pufferbaterie Störmeldung"
     presentValue="inactive"
     deviceType="BACtwin BI_SM_SYS_AMEV1 Störmeldung"
     statusFlags=[False, False, False, False]
@@ -563,6 +563,178 @@ class BI_RM_AMEV1(BinaryInputObject):
     #faultHighLimit: Real
     #faultLowLimit: Real
     profileName="BI_RM_AMEV1 Rückmeldung"
+    propertyList=[75,77,79,85,28,31,111,36,103,81,84,46,4,16,15,115,33,114,113,17,6,35,0,72,130,351,352,353,355,354,356,357,371,168]
+    _cov_criteria = COVIncrementCriteria
+
+class BI_RM_A_AMEV1(BinaryInputObject):
+    objectIdentifier=("binaryInput", 443)
+    objectName="MUSTER_###_#####°##_#####_###_#####_#####_RMA01"
+    description="Muster Rückmeldung Auf"
+    presentValue="inactive"
+    deviceType="BACtwin BI_RM_A_AMEV1 Rückmeldung Auf"
+    statusFlags=[False, False, False, False]
+    eventState="normal"
+    reliability="noFaultDetected"
+    outOfService=False
+    polarity="normal"
+    inactiveText="Passiv"
+    activeText="Auf"
+    changeOfStateTime= DateTime(date=Date("2025-01-01")._value,time=(23, 59, 59, 99))
+    changeOfStateCount=0
+    timeOfStateCountReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    elapsedActiveTime=1
+    timeOfActiveTimeReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    timeDelay=60
+    notificationClass=600
+    alarmValue="active"
+    eventEnable=[True,True,True]
+    ackedTransitions=[True,True,True]
+    notifyType=1
+    eventTimeStamps=[
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        ]
+    eventMessageTexts=["","",""] #ArrayOf(CharacterString, _length=3),
+    eventMessageTextsConfig=["Alarm:","Fehler:","Normal:"] #ArrayOf(CharacterString, _length=3)
+    eventDetectionEnable=False
+    #eventAlgorithmInhibitRef=ObjectPropertyReference
+    #eventAlgorithmInhibit=False
+    timeDelayNormal=1
+    reliabilityEvaluationInhibit=False
+    #interfaceValue: OptionalReal
+    #faultHighLimit: Real
+    #faultLowLimit: Real
+    profileName="BI_RM_A_AMEV1 Rückmeldung Auf"
+    propertyList=[75,77,79,85,28,31,111,36,103,81,84,46,4,16,15,115,33,114,113,17,6,35,0,72,130,351,352,353,355,354,356,357,371,168]
+    _cov_criteria = COVIncrementCriteria
+
+class BI_RM_Z_AMEV1(BinaryInputObject):
+    objectIdentifier=("binaryInput", 444)
+    objectName="MUSTER_###_#####°##_#####_###_#####_#####_RMZ01"
+    description="Muster Rückmeldung Zu"
+    presentValue="inactive"
+    deviceType="BACtwin BI_RM_Z_AMEV1 Rückmeldung"
+    statusFlags=[False, False, False, False]
+    eventState="normal"
+    reliability="noFaultDetected"
+    outOfService=False
+    polarity="normal"
+    inactiveText="Passiv"
+    activeText="Zu"
+    changeOfStateTime= DateTime(date=Date("2025-01-01")._value,time=(23, 59, 59, 99))
+    changeOfStateCount=0
+    timeOfStateCountReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    elapsedActiveTime=1
+    timeOfActiveTimeReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    timeDelay=60
+    notificationClass=600
+    alarmValue="active"
+    eventEnable=[True,True,True]
+    ackedTransitions=[True,True,True]
+    notifyType=1
+    eventTimeStamps=[
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        ]
+    eventMessageTexts=["","",""] #ArrayOf(CharacterString, _length=3),
+    eventMessageTextsConfig=["Alarm:","Fehler:","Normal:"] #ArrayOf(CharacterString, _length=3)
+    eventDetectionEnable=False
+    #eventAlgorithmInhibitRef=ObjectPropertyReference
+    #eventAlgorithmInhibit=False
+    timeDelayNormal=1
+    reliabilityEvaluationInhibit=False
+    #interfaceValue: OptionalReal
+    #faultHighLimit: Real
+    #faultLowLimit: Real
+    profileName="BI_RM_Z_AMEV1 Rückmeldung Zu"
+    propertyList=[75,77,79,85,28,31,111,36,103,81,84,46,4,16,15,115,33,114,113,17,6,35,0,72,130,351,352,353,355,354,356,357,371,168]
+    _cov_criteria = COVIncrementCriteria
+
+class BI_RM_E_AMEV1(BinaryInputObject):
+    objectIdentifier=("binaryInput", 445)
+    objectName="MUSTER_###_#####°##_#####_###_#####_#####_RME01"
+    description="Muster Rückmeldung Ein"
+    presentValue="inactive"
+    deviceType="BACtwin BI_RM_E_AMEV1 Rückmeldung"
+    statusFlags=[False, False, False, False]
+    eventState="normal"
+    reliability="noFaultDetected"
+    outOfService=False
+    polarity="normal"
+    inactiveText="Passiv"
+    activeText="Ein"
+    changeOfStateTime= DateTime(date=Date("2025-01-01")._value,time=(23, 59, 59, 99))
+    changeOfStateCount=0
+    timeOfStateCountReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    elapsedActiveTime=1
+    timeOfActiveTimeReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    timeDelay=60
+    notificationClass=600
+    alarmValue="active"
+    eventEnable=[True,True,True]
+    ackedTransitions=[True,True,True]
+    notifyType=1
+    eventTimeStamps=[
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        ]
+    eventMessageTexts=["","",""] #ArrayOf(CharacterString, _length=3),
+    eventMessageTextsConfig=["Alarm:","Fehler:","Normal:"] #ArrayOf(CharacterString, _length=3)
+    eventDetectionEnable=False
+    #eventAlgorithmInhibitRef=ObjectPropertyReference
+    #eventAlgorithmInhibit=False
+    timeDelayNormal=1
+    reliabilityEvaluationInhibit=False
+    #interfaceValue: OptionalReal
+    #faultHighLimit: Real
+    #faultLowLimit: Real
+    profileName="BI_RM_E_AMEV1 Rückmeldung Ein"
+    propertyList=[75,77,79,85,28,31,111,36,103,81,84,46,4,16,15,115,33,114,113,17,6,35,0,72,130,351,352,353,355,354,356,357,371,168]
+    _cov_criteria = COVIncrementCriteria
+
+class BI_RM_S_AMEV1(BinaryInputObject):
+    objectIdentifier=("binaryInput", 446)
+    objectName="MUSTER_###_#####°##_#####_###_#####_#####_RMS01"
+    description="Muster Rückmeldung Aus"
+    presentValue="inactive"
+    deviceType="BACtwin BI_RM_S_AMEV1 Rückmeldung Aus"
+    statusFlags=[False, False, False, False]
+    eventState="normal"
+    reliability="noFaultDetected"
+    outOfService=False
+    polarity="normal"
+    inactiveText="Passiv"
+    activeText="Aus"
+    changeOfStateTime= DateTime(date=Date("2025-01-01")._value,time=(23, 59, 59, 99))
+    changeOfStateCount=0
+    timeOfStateCountReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    elapsedActiveTime=1
+    timeOfActiveTimeReset=DateTime(date=Date().now()._value, time=Time().now()._value)
+    timeDelay=60
+    notificationClass=600
+    alarmValue="active"
+    eventEnable=[True,True,True]
+    ackedTransitions=[True,True,True]
+    notifyType=1
+    eventTimeStamps=[
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        TimeStamp(dateTime=DateTime(date=(255,255,255,255), time=(255,255,255,255))), 
+        ]
+    eventMessageTexts=["","",""] #ArrayOf(CharacterString, _length=3),
+    eventMessageTextsConfig=["Alarm:","Fehler:","Normal:"] #ArrayOf(CharacterString, _length=3)
+    eventDetectionEnable=False
+    #eventAlgorithmInhibitRef=ObjectPropertyReference
+    #eventAlgorithmInhibit=False
+    timeDelayNormal=1
+    reliabilityEvaluationInhibit=False
+    #interfaceValue: OptionalReal
+    #faultHighLimit: Real
+    #faultLowLimit: Real
+    profileName="BI_RM_S_AMEV1 Rückmeldung Aus"
     propertyList=[75,77,79,85,28,31,111,36,103,81,84,46,4,16,15,115,33,114,113,17,6,35,0,72,130,351,352,353,355,354,356,357,371,168]
     _cov_criteria = COVIncrementCriteria
 

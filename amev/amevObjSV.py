@@ -5,7 +5,7 @@ from bacpypes3.primitivedata import *
 class SV_ANL_AMEV1(StructuredViewObject):
     objectIdentifier=("structuredView", 101)
     objectName="MUSTER_480_ASP01°01_#####_###_AS~01_#####_SV~01"
-    description="MUSTER_Gebäudeautomationssystem Automationsschwerpunkt AS System"
+    description="MUSTER_GA-System Automationsschwerpunkt AS System"
     nodeType= "system"
     nodeSubtype= "Anlage"
     subordinateList=ArrayOf(DeviceObjectReference)([
@@ -19,7 +19,7 @@ class SV_ANL_AMEV1(StructuredViewObject):
     #subordinateRelationships: ArrayOf(Relationship)
     #defaultSubordinateRelationship: Relationship
     #repesents
-    #tags
+    #tags=[""]
     #Profile_Location
     profileName="SV_ANL_AMEV1 Anlage"
     propertyList=[75,77,79,28,208,207,211,210,371,168] #210,488,487,489,490,491,486,485,168
@@ -27,7 +27,7 @@ class SV_ANL_AMEV1(StructuredViewObject):
 class SV_BGP_AMEV1(StructuredViewObject):
     objectIdentifier=("structuredView", 102)
     objectName="MUSTER_480_ASP01°01_#####_###_AS~01_#####_SV~02"
-    description="MUSTER_Gebäudeautomationssystem Automationsschwerpunkt AS Subsystem"
+    description="MUSTER_GA-System Automationsschwerpunkt AS Subsystem"
     nodeType= "subsystem"
     nodeSubtype= "Baugruppe"
     subordinateList=ArrayOf(DeviceObjectReference)([
@@ -49,7 +49,7 @@ class SV_BGP_AMEV1(StructuredViewObject):
 class SV_AGG_AMEV1(StructuredViewObject):
     objectIdentifier=("structuredView", 103)
     objectName="MUSTER_480_ASP01°01_#####_###_AS~01_#####_SV~03"
-    description="MUSTER_Gebäudeautomationssystem Automationsschwerpunkt AS Equipment"
+    description="MUSTER_GA-System Automationsschwerpunkt AS Equipment"
     nodeType= "equipment"
     nodeSubtype= "Aggregat"
     subordinateList=ArrayOf(DeviceObjectReference)([

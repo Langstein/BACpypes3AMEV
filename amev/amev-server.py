@@ -37,7 +37,7 @@ class DeviceObject(_DeviceObject):
     objectIdentifier=('device',4222) #Fixme
     #vendorIdentifier = _vendor_id
     #objectName=_dev_name
-    description = "Gebäudeautomationssystem Automationsschwerpunkt AS Device"
+    description = "GA-System Automationsschwerpunkt AS Device"
     modelName = 'Python3 AMEV BACnet Testserver'
     firmwareRevision = '0.1'
     applicationSoftwareVersion = '0.8'
@@ -141,7 +141,7 @@ class NP_IP1(_NetworkPortObject):
     case doesn't add any proprietary properties).
     """
     objectName = "ORTS-BAS_480_ASP01°01_#####_###_AS~01_#####_NP~01" # Fixme
-    description = "Gebäudeautomationssystem Automationsschwerpunkt AS Device Netwerk Anschluß IP"
+    description = "GA-System Automationsschwerpunkt AS Device Netwerk Anschluß IP"
 
     #pass
 
@@ -348,7 +348,7 @@ def Basisobjekte(app):
         sv1 = SV_AGG_AMEV1(
             objectIdentifier=("structuredView", 1),
             objectName="ORTS-BAS_480_ASP01°01_#####_###_AS~01_#####_SV~01",
-            description="Gebäudeautomationssystem Automationsschwerpunkt AS Equipment",
+            description="GA-System Automationsschwerpunkt AS Equipment",
             subordinateList=ArrayOf(DeviceObjectReference)([
                 DeviceObjectReference(objectIdentifier=("device",999),),
                 DeviceObjectReference(objectIdentifier=("calendar",101),),
@@ -396,26 +396,26 @@ def Heizkreis(app):
 #Beispiel Heizkreis
 #Vorlauffühler
         #Ort_BAS="71157_B6_EG"
-        #Ort_KT ="Irgendwo"
+        #Ort_Text ="Irgendwo"
         Ort_BAS="ORTS-BAS"
-        Ort_KT ="" #"Ortsangabe"
+        Ort_Text ="" #"Ortsangabe"
         Gew_BAS="420"
-        Gew_KT ="" #"Wärmeversorgungsanlage"
+        Gew_Text ="" #"Wärmeversorgungsanlage"
         Anl_BAS="VTA01°01"
-        Anl_KT ="Verteilanlage 1"
+        Anl_Text ="Verteilanlage 1"
         Bgp_BAS="###"
-        Bgp_KT =""
+        Bgp_Text =""
         MeP_BAS="###"
-        MeP_KT =""
+        MeP_Text =""
         Agg_BAS="#####"
-        Agg_KT =""
+        Agg_Text =""
         Btm_BAS="#####"
-        Btm_KT =""
+        Btm_Text =""
         
         sv998=SV_BGP_AMEV1(
             objectIdentifier=("structured-view", 998),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SV~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"",
             #subordinateList=ArrayOf(DeviceObjectReference)([
             subordinateList=[
                 DeviceObjectReference(objectIdentifier=("structured-view",999)),
@@ -428,12 +428,12 @@ def Heizkreis(app):
         app.add_object(sv998)
         
         Bgp_BAS="HZK01"
-        Bgp_KT ="Heizkreis 1"
+        Bgp_Text ="Heizkreis 1"
 
         sv999=SV_BGP_AMEV1(
             objectIdentifier=("structured-view", 999),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SV~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"",
             subordinateList=ArrayOf(DeviceObjectReference)([
                 DeviceObjectReference(objectIdentifier=("structured-view",1000)),
                 DeviceObjectReference(objectIdentifier=("structured-view",1001)),
@@ -479,7 +479,7 @@ def Heizkreis(app):
         sch1000 = SCH_BN_AMEV1(
             objectIdentifier=("schedule", 1000),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SCH01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Zeitplan",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Zeitplan",
             weeklySchedule=weekly_schedule,
             listOfObjectPropertyReferences=[
                 DeviceObjectPropertyReference(
@@ -496,7 +496,7 @@ def Heizkreis(app):
         mv1000 = MV_GS_AEM_AMEV1(
             objectIdentifier=("multiStateValue", 1000),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"AST01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Anlagensteuerung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Anlagensteuerung",
         )
         #if _debug: _log.info("    - multistateValue: %r", mv1000.objectName)
         app.add_object(mv1000)
@@ -505,16 +505,16 @@ def Heizkreis(app):
         mv1000.eventMessageTextsConfig[2] = "Normal: "+ mv1000.description 
 
         MeP_BAS="HZV"
-        MeP_KT ="Heizwasser Vorlauf"
+        MeP_Text ="Heizwasser Vorlauf"
         Agg_BAS="EF~01"
-        Agg_KT =""
+        Agg_Text =""
         Btm_BAS="T~~01"
-        Btm_KT ="Temperatur 1"
+        Btm_Text ="Temperatur 1"
         
         sv1000=SV_AGG_AMEV1(
             objectIdentifier=("structured-view", 1000),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SV~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"",
             subordinateList=ArrayOf(DeviceObjectReference)([
                 DeviceObjectReference(objectIdentifier=("analog-input",1000)),
                 DeviceObjectReference(objectIdentifier=("trend-log",1000)),
@@ -530,7 +530,7 @@ def Heizkreis(app):
         ai1000=AI_MW_T_H_HT_AMEV1(
             objectIdentifier=("analog-input", 1000),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"MW~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Messwert",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Messwert",
         )
         app.add_object(ai1000)
         
@@ -538,7 +538,7 @@ def Heizkreis(app):
         tl1000=TL_AN_P_AMEV1(
             objectIdentifier=("trend-log", 1000),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"MW~01_TL",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Messwert Datenaufzeichnung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Messwert Datenaufzeichnung",
             logDeviceObjectProperty=DeviceObjectPropertyReference(
                 objectIdentifier="analog-input,1000",
                 propertyIdentifier=PropertyIdentifier.presentValue,
@@ -549,14 +549,14 @@ def Heizkreis(app):
         av1000=AV_SW_T_AMEV1(
             objectIdentifier=("analogValue", 1000), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SWC01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Sollwert berechnet",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Sollwert berechnet",
         )
         app.add_object(av1000)
         
         lp1000 = LP_AN_AMEV1(
             objectIdentifier=("loop", 1000), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"LP~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Regler",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Regler",
             manipulatedVariableReference=ObjectPropertyReference(
                 objectIdentifier="analogOutput,1010", propertyIdentifier=PropertyIdentifier.presentValue, propertyArrayIndex=16,
                 ),
@@ -577,7 +577,7 @@ def Heizkreis(app):
         av1001=AV_SW_T_AMEV1(
             objectIdentifier=("analogValue", 1001), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"MAX01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Maximalwert",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Maximalwert",
             presentValue=55,
         )
         app.add_object(av1001)
@@ -585,7 +585,7 @@ def Heizkreis(app):
         av1002=AV_SW_T_AMEV1(
             objectIdentifier=("analogValue", 1002), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"MIN01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Minimalwert",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Minimalwert",
             presentValue=20,
         )
         app.add_object(av1002)
@@ -593,7 +593,7 @@ def Heizkreis(app):
         av1003=AV_SW_T_AMEV1(
             objectIdentifier=("analogValue", 1003), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"KST01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Kennlinie Steilheit",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Kennlinie Steilheit",
             presentValue=1.1,
             units=98,
         )
@@ -602,7 +602,7 @@ def Heizkreis(app):
         av1004=AV_SW_T_AMEV1(
             objectIdentifier=("analogValue", 1004), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"KEX01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Kennlinie Exponent",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Kennlinie Exponent",
             presentValue=1.3,
             units=98,
         )
@@ -611,7 +611,7 @@ def Heizkreis(app):
         av1005=AV_SW_T_AMEV1(
             objectIdentifier=("analogValue", 1005), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"KFP01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Kennlinie Fußpunkt",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Kennlinie Fußpunkt",
             presentValue=22,
             units=98,
         )
@@ -620,7 +620,7 @@ def Heizkreis(app):
         av1006=AV_SW_T_AMEV1(
             objectIdentifier=("analogValue", 1006), 
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"KPV01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Kennlinie Parallelverschiebung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Kennlinie Parallelverschiebung",
             presentValue=0,
             units='degreesKelvin',
         )
@@ -629,12 +629,12 @@ def Heizkreis(app):
 
 #Rücklauffühler        
         MeP_BAS="HZR"
-        MeP_KT ="Heizwasser Rücklauf"
+        MeP_Text ="Heizwasser Rücklauf"
 
         sv1001=SV_AGG_AMEV1(
             objectIdentifier=("structured-view", 1001),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SV~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"",
             subordinateList=ArrayOf(DeviceObjectReference)([
                 DeviceObjectReference(objectIdentifier=("analog-input",1001)),
                 DeviceObjectReference(objectIdentifier=("trend-log",1001)),
@@ -650,14 +650,14 @@ def Heizkreis(app):
         ai1001=AI_MW_T_H_HT_AMEV1(
             objectIdentifier=("analog-input", 1001),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"MW~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Messwert",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Messwert",
         )
         app.add_object(ai1001)
         
         tl1001=TL_AN_P_AMEV1(
             objectIdentifier=("trend-log", 1001),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"MW~01_TL",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Messwert Datenaufzeichnung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Messwert Datenaufzeichnung",
             logDeviceObjectProperty=DeviceObjectPropertyReference(
                 objectIdentifier="analog-input,1001",
                 propertyIdentifier=PropertyIdentifier.presentValue,
@@ -667,16 +667,16 @@ def Heizkreis(app):
 
 #Ventil
         MeP_BAS="HZV"
-        MeP_KT ="Heizwasser Vorlauf"
+        MeP_Text ="Heizwasser Vorlauf"
         Agg_BAS="VEN01"
-        Agg_KT ="Ventil 1"
+        Agg_Text ="Ventil 1"
         Btm_BAS="MOT01"
-        Btm_KT =""
+        Btm_Text =""
 
         sv1010=SV_AGG_AMEV1(
             objectIdentifier=("structured-view", 1010),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SV~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"",
             subordinateList=([
                 DeviceObjectReference(objectIdentifier=("analog-output",1010)),
                 DeviceObjectReference(objectIdentifier=("event-enrollment",10101)),
@@ -698,12 +698,12 @@ def Heizkreis(app):
         app.add_object(sv1010)
         
         Btm_BAS="MOT01"
-        Btm_KT =""
+        Btm_Text =""
         
         ao1010 = AO_ST_AMEV1(
             objectIdentifier=("analog-output", 1010),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"ST~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Stellsignal",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Stellsignal",
             statusFlags=[False, False, False, False],
                     )
         app.add_object(ao1010)
@@ -711,14 +711,14 @@ def Heizkreis(app):
         ai1010=AI_RW_AMEV1(
             objectIdentifier=("analog-input", 1010),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"RW~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Rückführwert",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Rückführwert",
         )
         app.add_object(ai1010)        
 
         tl1010=TL_AN_P_AMEV1(
             objectIdentifier=("trend-log", 1010),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"MW~01_TL",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Messwert Datenaufzeichnung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Messwert Datenaufzeichnung",
             logDeviceObjectProperty=DeviceObjectPropertyReference(
                 objectIdentifier="analog-input,1010",
                 propertyIdentifier=PropertyIdentifier.presentValue,
@@ -729,7 +729,7 @@ def Heizkreis(app):
         ee10101=EE_FLIM_AMEV1(
             objectIdentifier=("eventEnrollment", 10101),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"ABW01_EE",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Abweichung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Abweichung",
             eventParameters=EventParameter(
                 floatingLimit=EventParameterFloatingLimit(
                     timeDelay=60,
@@ -757,11 +757,11 @@ def Heizkreis(app):
         ee10101.eventMessageTextsConfig[2] = "Normal: "+ee10101.description
         
         Btm_BAS="UBE01"
-        Btm_KT ="Bedieneinheit"
+        Btm_Text ="Bedieneinheit"
         ee10102=EE_CCP_AMEV1(
             objectIdentifier=("eventEnrollment", 10102),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"HDG01_EE",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Hand stellen",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Hand stellen",
             eventParameters=EventParameter(
                 changeOfState=EventParameterChangeOfState(
                     timeDelay=3,
@@ -788,11 +788,11 @@ def Heizkreis(app):
         ee10102.eventMessageTextsConfig[2] = "Normal: "+ee10102.description
         
         Btm_BAS="LVB01"
-        Btm_KT ="LVB"
+        Btm_Text ="LVB"
         ee10103=EE_COB_AMEV1(
         objectIdentifier=("eventEnrollment", 10103),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"HDG01_EE",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Hand stellen",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Hand stellen",
             objectPropertyReference=DeviceObjectPropertyReference(
                 objectIdentifier="analogOutput,1010",
                 propertyIdentifier=PropertyIdentifier.statusFlags,
@@ -807,16 +807,16 @@ def Heizkreis(app):
 
 #Pumpe
         MeP_BAS="HZV"
-        MeP_KT ="Heizwasser Vorlauf"
+        MeP_Text ="Heizwasser Vorlauf"
         Agg_BAS="PPE01"
-        Agg_KT ="Pumpe 1"
+        Agg_Text ="Pumpe 1"
         Btm_BAS="#####"
-        Btm_KT =""
+        Btm_Text =""
 
         sv1020=SV_AGG_AMEV1(
             objectIdentifier=("structured-view", 1020),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SV~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"",
             subordinateList=([
                 DeviceObjectReference(objectIdentifier=("binary-output",1020)),
                 DeviceObjectReference(objectIdentifier=("event-enrollment",10201)),
@@ -840,21 +840,21 @@ def Heizkreis(app):
         bo1020=BO_SB_AMEV1(
             objectIdentifier=("binary-output", 1020),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"SB~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Schaltbefehl",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Schaltbefehl",
         )
         app.add_object(bo1020)
 
         bi1020=BI_BM_AMEV1(
             objectIdentifier=("binary-input", 1020),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"BM~01",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Betriebsmeldung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Betriebsmeldung",
         )
         app.add_object(bi1020)
 
         ee10201=EE_CMDF_AMEV1(
             objectIdentifier=("eventEnrollment", 10201),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"AK~01_EE",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Ausführkontrolle",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Ausführkontrolle",
             eventParameters=EventParameter(
                 commandFailure=EventParameterCommandFailure(
                     timeDelay=3,
@@ -881,7 +881,7 @@ def Heizkreis(app):
         tl1020=TL_BN_AMEV1(
             objectIdentifier=("trend-log", 1020),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"BM~01_TL",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Betriebsmeldung Datenaufzeichnung",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Betriebsmeldung Datenaufzeichnung",
             logDeviceObjectProperty=DeviceObjectPropertyReference(
                 objectIdentifier="binary-input,1020",
                 propertyIdentifier=PropertyIdentifier.presentValue,
@@ -890,11 +890,11 @@ def Heizkreis(app):
         app.add_object(tl1020)
 
         Btm_BAS="UBE01"
-        Btm_KT ="Bedieneinheit"
+        Btm_Text ="Bedieneinheit"
         ee10202=EE_CCP_AMEV1(
             objectIdentifier=("eventEnrollment", 10202),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"HDB01_EE",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Hand schalten",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Hand schalten",
             eventParameters=EventParameter(
                 changeOfState=EventParameterChangeOfState(
                     timeDelay=3,
@@ -921,11 +921,11 @@ def Heizkreis(app):
         ee10202.eventMessageTextsConfig[2] = "Normal: "+ee10202.description
         
         Btm_BAS="LVB01"
-        Btm_KT ="LVB"
+        Btm_Text ="LVB"
         ee10203=EE_COB_AMEV1(
         objectIdentifier=("eventEnrollment", 10203),
             objectName=Ort_BAS+"_"+""+Gew_BAS+"_"+""+Anl_BAS+"_"+""+Bgp_BAS+"_"+""+MeP_BAS+"_"+""+Agg_BAS+"_"+""+Btm_BAS+"_"+"HDB01_EE",
-            description=Ort_KT+" "+""+Gew_KT+" "+""+Anl_KT+" "+""+Bgp_KT+" "+""+MeP_KT+" "+""+Agg_KT+" "+""+Btm_KT+" "+"Hand schalten",
+            description=Ort_Text+" "+""+Gew_Text+" "+""+Anl_Text+" "+""+Bgp_Text+" "+""+MeP_Text+" "+""+Agg_Text+" "+""+Btm_Text+" "+"Hand schalten",
             objectPropertyReference=DeviceObjectPropertyReference(
                 objectIdentifier="binaryOutput,1020",
                 propertyIdentifier=PropertyIdentifier.statusFlags,
@@ -1191,12 +1191,11 @@ async def main() -> None:
             _log.debug("app: %r", app)
             
 #Aggregate
-        Basisobjekte(app) #Müssen immer da sein
+        Basisobjekte(app) #Müssen immer da sein, Grundlage für Alarme und Zeitmanagement, Gerät
         #Test_AMEV_Objekte(app)
         #NONAMEV_Objekte(app)
         Heizkreis(app)
-        AGG_SSK_AMEV1(app)
-        AGG_EF_T_AMEV1(app)     
+        KG400_Demo(app)     
             
         #Test am AMEV Class Object
         ai10=AI_MW_T_AU_AMEV1(
