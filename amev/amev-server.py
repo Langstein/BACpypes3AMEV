@@ -22,6 +22,44 @@ from bacpypes3.local.networkport import NetworkPortObject as _NetworkPortObject
 
 from amevTemplate import *
 from aggregates.KG400 import *
+from amevWeather import *
+
+
+        
+async def ramp(
+    avo: Object, starting_value: float, step_count: int, step_size: float
+) -> None:
+    """
+    Ramp the present value from the starting value up step_size increments
+    step_count number of times, then back down again.
+    """
+    #if _debug:
+    #    _log.debug("ramp %r %r %r %r", avo, starting_value, step_count, step_size)
+
+    try:
+        while True:
+            #if _debug:
+                #_log.debug("- reliability %s", avo.reliability)
+                #_log.debug("- ID %d", avo.objectIdentifier)
+                #_log.debug("- ID %s", avo.objectIdentifier)
+            
+            #for i in range(step_count):
+            if avo.outOfService == False:
+                avo.presentValue = avo.presentValue + 0.1 # starting_value + step_size
+            await asyncio.sleep(5)
+
+            #if _debug:
+            #    _log.debug("- ramp down")
+            #for i in range(step_count):
+                #avo.presentValue = starting_value + step_count - step_size
+                #avo.presentValue = starting_value + step_count - step_size
+                #await asyncio.sleep(0.5)
+            if avo.presentValue > avo.maxPresValue:
+                avo.presentValue = avo.minPresValue
+                _log.debug("- ramp minPresValue")
+
+    except KeyboardInterrupt:
+        pass        
 
 # some debugging
 _debug = 0
@@ -262,9 +300,6 @@ async def ramp(
 
 
 def Basisobjekte(app):
-        csv1=NONAMEV_CSV(
-        )
-        app.add_object(csv1)
         
 #**************** FIL ***************
         fil1=FIL_AMEV1(
@@ -1090,7 +1125,7 @@ def checkFault(obj:Object)-> None:
             obj.statusFlags[0]=True
             obj.statusFlags[1]=True
         else:
-            #obj.statusFlags[0]=False wird in checkAlarm gesetzt!
+            #obj.statusFlags[0]=False #wird in checkAlarm gesetzt!
             obj.statusFlags[1]=False
     except:
         pass
@@ -1113,6 +1148,9 @@ def checkAlarm(obj:Object)-> None:
                     obj.eventState = 0
             except:
                 pass
+        case 0 | 1 | 2 | 4 : #ToDo more ObjectType
+            obj.statusFlags[0]=False
+
         
 def checkOutOfService(obj:Object)-> None:
     try:
@@ -1136,16 +1174,22 @@ def runPID(obj:Object)-> None:
 
 
 async def objCheck(app):
-    print("objCheck run")
+    print("objCheck Service run")
     try:
+        ol=app.objectIdentifier
+        #print(list(ol.keys()))
+        #print(list(ol.keys())[2])
+        locationObj = list(ol.values())[2]
+        #print(locationObj.presentValue)
+
         while True:
-            ol=app.objectIdentifier
+            #ol=app.objectIdentifier
             objekte=len(ol)
             #print(objekte)
             #print(list(ol.items())[objekte-1])
-            #print(list(ol.keys())[0])
-            #print(list(ol.values())[0])
-            
+            #print(list(ol.keys())[2])
+            #print(list(ol.values())[2])
+            location="Berlin"        
             i=0
             while i < objekte:  
             #for index, objects in ol:
@@ -1155,8 +1199,10 @@ async def objCheck(app):
                 #print(obj)
                 checkOutOfService(obj)
                 #print("checkOutOfService done")
+                
                 checkAlarm(obj)
                 checkFault(obj)
+                
                 #runPID(obj)
                 if obj.objectType == 20:
                     sp=obj.logDeviceObjectProperty
@@ -1191,20 +1237,63 @@ async def main() -> None:
             _log.debug("app: %r", app)
             
 #Aggregate
+
+        csv10=NONAMEV_CSV(
+            objectIdentifier=("characterstringValue", 10),
+            objectName="ORTS-BAS_420_WET01°01_#####_AU~_#####_#####_CSV01",
+            description="Wetterstation Außen Zeichenfolge mit Ortsangabe für Wetter",
+            presentValue="Holzgerlingen"         
+        )
+        app.add_object(csv10)
         Basisobjekte(app) #Müssen immer da sein, Grundlage für Alarme und Zeitmanagement, Gerät
         #Test_AMEV_Objekte(app)
         #NONAMEV_Objekte(app)
         Heizkreis(app)
         KG400_Demo(app)     
-            
+
         #Test am AMEV Class Object
+        csv1=NONAMEV_CSV(
+        )
+        app.add_object(csv1)
+
+
         ai10=AI_MW_T_AU_AMEV1(
             objectIdentifier=("analogInput", 10), 
-            objectName="ORTS-BAS_420_WET01_#####_AU~_EF~01_T~~01_MW~01",
+            objectName="ORTS-BAS_420_WET01_GBG01_AU~_MFE01_T~~01_MW~01",
             description="Wetterstation Außen Temperatur Messwert",
-            profileName="AI_MW_AU_T_AMEV1 Temperatur Messung",
+            updateInterval=60,
+            resolution=1,
         )
         app.add_object(ai10)
+
+        ai11=AI_MW_M_L_AU_AMEV1(
+            objectIdentifier=("analogInput", 11), 
+            objectName="ORTS-BAS_420_WET01_GBG01_AU~_MFE01_M~~01_MW~01",
+            description="Wetterstation Außen Feuchte Messwert",
+            updateInterval=60,
+            resolution=1,
+        )
+        app.add_object(ai11)        
+
+        ai12=AI_MW_WIG_AMEV1(
+            objectIdentifier=("analogInput", 12), 
+            objectName="ORTS-BAS_420_WET01_GBG01_AU~_MFE01_WIG01_MW~01",
+            description="Wetterstation Außen Windgeschwindigkeit Messwert",
+            #units="kilometersPerHour",
+            updateInterval=60,
+            resolution=1,
+        )
+        app.add_object(ai12)
+
+        ai13=AI_MW_WIR_AMEV1(
+            objectIdentifier=("analogInput", 13), 
+            objectName="ORTS-BAS_420_WET01_GBG01_AU~_MFE01_WIR01_MW~01",
+            description="Wetterstation Außen Windrichtung Messwert",
+            #units="degreesAngular",
+            updateInterval=60,
+            resolution=1,
+        )
+        app.add_object(ai13)
  
         Meldeschauer_inhibit=ObjectPropertyReference(
             objectIdentifier="binaryValue,614",
@@ -1217,15 +1306,12 @@ async def main() -> None:
         #send_initial_iam(app)
         app.i_am()
         wi=app.who_is()
-        #print(wi) check for IP address 
-        
-        
-        # ramp up and down
-        # Simulator für Werte
-        await asyncio.gather(
-            ramp(ai10, 4.0, 35, 0.1),
-            objCheck(app)
 
+        await asyncio.gather(
+            #ramp(ai10, 4.0, 35, 0.1),
+            #wetter = 
+            wetter_daten(app, ai10, ai11, ai12, ai13),
+            objCheck(app)
         )
 
     finally:

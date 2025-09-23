@@ -1,6 +1,6 @@
 # BACpypes3 - Python library for AMEV BACtwin demonstration
 
-This folk uses BACpypes3 library to create some Demo-Application of the AMEV BACtwin.
+This implementation uses BACpypes3 library to create some Demo-Application of the AMEV BACtwin. It is intended to show how BACtwin equipments, subsystem and systems (plants) can be set up in order to use BACnet as an efficient IoT/OT protocol for buildings.
 
 See [AMEV BACtwin](https://www.amev-online.de/AMEVInhalt/Planen/Gebaeudeautomation/BACtwin/) for the Documentation.
 
@@ -8,6 +8,7 @@ See [AMEV BACtwin](https://www.amev-online.de/AMEVInhalt/Planen/Gebaeudeautomati
 ## System requirements
 - python > 3.12
 - sudo apt install pipenv
+- pip install aiohttp (for weatherdata request)
 
 ## Usage
 - Tested with python 3.12
